@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class ContaBancaria {
+
     public static void main(String[] args) {
         String nome = "Marcos Vinicius";
         String tipoConta = "Corrente";
@@ -12,28 +13,39 @@ public class ContaBancaria {
             mostraMenu();
             int opt = s.nextInt();
             switch (opt) {
-                case 1: // Visualizar o saldo
-                {
-                    System.out.println("\nO saldo na conta e de R$ %.2f\n".formatted(saldo));
+                case 1: { // Visualizar o saldo
+                    System.out.println(
+                        "\nO saldo na conta e de R$ %.2f\n".formatted(saldo)
+                    );
                     break;
                 }
                 case 2: {
                     System.out.println("\nQual o valor a receber? ");
-                    saldo += s.nextInt();
-                    System.out.println("\nSaldo na conta atualizado R$ %.2f\n".formatted(saldo));
+                    saldo += s.nextDouble();
+                    System.out.println(
+                        "\nSaldo na conta atualizado R$ %.2f\n".formatted(saldo)
+                    );
                     break;
                 }
                 case 3: {
                     System.out.println("\nQual o valor a transferir? ");
-                    int transferencia = s.nextInt();
+                    double transferencia = s.nextDouble();
                     if (saldo < transferencia) {
-                        System.out.println("\nNão e possivel fazer a transferencia, pois não saldo suficiente na conta.");
-                        System.out.println("\nSaldo na conta R$ %.2f\n".formatted(saldo));
+                        System.out.println(
+                            "\nNão e possivel fazer a transferencia, pois não saldo suficiente na conta."
+                        );
+                        System.out.println(
+                            "\nSaldo na conta R$ %.2f\n".formatted(saldo)
+                        );
                         break;
                     }
-                    System.out.println("\nTransferindo R$ %d".formatted(transferencia));
-                    saldo-=transferencia;
-                    System.out.println("\nSaldo na conta atualizado R$ %.2f\n".formatted(saldo));
+                    System.out.println(
+                        "\nTransferindo R$ %d".formatted(transferencia)
+                    );
+                    saldo -= transferencia;
+                    System.out.println(
+                        "\nSaldo na conta atualizado R$ %.2f\n".formatted(saldo)
+                    );
                     break;
                 }
                 case 4: {
@@ -49,7 +61,11 @@ public class ContaBancaria {
         s.close();
     }
 
-    public static void mostraCliente(String nome, String tipoConta, double saldo) {
+    public static void mostraCliente(
+        String nome,
+        String tipoConta,
+        double saldo
+    ) {
         System.out.println("        Conta Bancaria");
         System.out.println("*****************************");
         System.out.println("    Cliente: " + nome);
